@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="form">
+    <ion-list lines="none">
+      <ion-list-header class="ion-padding-bottom">
+        <ion-label>個人情報</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="stacked">氏名（漢字）</ion-label>
+        <ion-input
+          formControlName="fullNameKanji"
+          helperText="漢字で入力してください"
+          [errorText]="
+            form.get('fullNameKanji')?.errors?.['required']
+              ? '氏名（漢字）は必須です。'
+              : form.get('fullNameKanji')?.errors?.['pattern']
+                ? '漢字のみ入力してください。'
+                : ''
+          "
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">氏名（カナ）</ion-label>
+        <ion-input
+          formControlName="fullNameKana"
+          helperText="例: ヤマダタロウ"
+          [errorText]="
+            form.get('fullNameKana')?.errors?.['required']
+              ? '氏名（カナ）は必須です。'
+              : form.get('fullNameKana')?.errors?.['pattern']
+                ? 'カタカナのみ入力してください。'
+                : ''
+          "
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">電話番号</ion-label>
+        <ion-input
+          formControlName="phone"
+          type="tel"
+          placeholder="888-888-8888"
+          helperText="電話番号を入力してください"
+          errorText="電話番号は必須です。"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">生年月日</ion-label>
+        <ion-input
+          formControlName="birthDate"
+          helperText="生年月日を入力してください"
+          errorText="生年月日は必須です。"
+          type="date"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" fill="clear" shape="round" (click)="onClick()">
+      Click me
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
